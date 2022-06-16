@@ -4,6 +4,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'wordList.dart';
 
 WordList wordList = WordList();
+
 void main() {
   runApp(const MyApp());
 }
@@ -27,7 +28,9 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
 
-  //字卡
+  int changeIndex = 0; // 平片切換用, 平 = 0 / 片 = 1
+
+  //生成字卡
   Widget wordCard(int num) {
     return SizedBox(
       height: 60,
@@ -41,10 +44,16 @@ class HomePage extends StatelessWidget {
           alignment: Alignment.center,
           child: Column(
             children: [
-              Text(
-                wordList.wordList[num].hiragana,
-                style: TextStyle(color: Colors.black, fontSize: 20),
-              ),
+              if (changeIndex == 0)
+                Text(
+                  wordList.wordList[num].hiragana,
+                  style: TextStyle(color: Colors.black, fontSize: 20),
+                )
+              else
+                Text(
+                  wordList.wordList[num].katagana,
+                  style: TextStyle(color: Colors.black, fontSize: 20),
+                ),
               Text(
                 wordList.wordList[num].roman,
                 style: TextStyle(color: Colors.black, fontSize: 13),
@@ -58,8 +67,7 @@ class HomePage extends StatelessWidget {
   }
 
   int index = 0; //索引值 (結尾值)
-  var list = [5, 5, 5, 5, 5, 5, 3, 5, 2, 1];
-
+  var list = [5, 5, 5, 5, 5, 5, 3, 5, 2, 1]; //每排個數
   // 判斷, 載入卡片
   Widget LoadWordCard(int line) {
     if (line == 5) {
@@ -96,31 +104,51 @@ class HomePage extends StatelessWidget {
     }
   }
 
+  // 平片切換
   Widget ChangeButton() {
-    var GanaList = ["平假名", "片假名"];
-
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        for (int i = 0; i < 2; i++)
-          SizedBox(
-            height: 50,
-            width: 190,
-            child: TextButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.purpleAccent),
-              ),
-              clipBehavior: Clip.antiAlias, // 抗鋸齒
-              child: Container(
-                alignment: Alignment.center,
-                child: Text(
-                  GanaList[i],
-                  style: TextStyle(color: Colors.black, fontSize: 20),
-                ),
-              ),
-              onPressed: () async {},
+        SizedBox(
+          height: 50,
+          width: 190,
+          child: TextButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.purpleAccent),
             ),
+            clipBehavior: Clip.antiAlias, // 抗鋸齒
+            child: Container(
+              alignment: Alignment.center,
+              child: Text(
+                "平假名",
+                style: TextStyle(color: Colors.black, fontSize: 20),
+              ),
+            ),
+            onPressed: () async {
+              changeIndex = 0;
+            },
           ),
+        ),
+        SizedBox(
+          height: 50,
+          width: 190,
+          child: TextButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.purpleAccent),
+            ),
+            clipBehavior: Clip.antiAlias, // 抗鋸齒
+            child: Container(
+              alignment: Alignment.center,
+              child: Text(
+                "片假名",
+                style: TextStyle(color: Colors.black, fontSize: 20),
+              ),
+            ),
+            onPressed: () async {
+              changeIndex = 1;
+            },
+          ),
+        ),
       ],
     );
   }
