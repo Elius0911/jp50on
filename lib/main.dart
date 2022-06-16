@@ -16,9 +16,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
         home: SafeArea(
           child: HomePage(),
         ));
@@ -33,7 +30,7 @@ class HomePage extends StatelessWidget {
   //生成字卡
   Widget wordCard(int num) {
     return SizedBox(
-      height: 60,
+      height: 55,
       width: 73,
       child: TextButton(
         style: ButtonStyle(
@@ -47,16 +44,16 @@ class HomePage extends StatelessWidget {
               if (changeIndex == 0)
                 Text(
                   wordList.wordList[num].hiragana,
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  style: TextStyle(color: Colors.black, fontSize: 18),
                 )
               else
                 Text(
                   wordList.wordList[num].katagana,
-                  style: TextStyle(color: Colors.black, fontSize: 20),
+                  style: TextStyle(color: Colors.black, fontSize: 18),
                 ),
               Text(
                 wordList.wordList[num].roman,
-                style: TextStyle(color: Colors.black, fontSize: 13),
+                style: TextStyle(color: Colors.black, fontSize: 11),
               ),
             ],
           ),
@@ -67,7 +64,7 @@ class HomePage extends StatelessWidget {
   }
 
   int index = 0; //索引值 (結尾值)
-  var list = [5, 5, 5, 5, 5, 5, 3, 5, 2, 1]; //每排個數
+  var list = [5, 5, 5, 5, 5, 5, 5, 3, 5, 2, 1]; //每排個數
   // 判斷, 載入卡片
   Widget LoadWordCard(int line) {
     if (line == 5) {
@@ -98,14 +95,15 @@ class HomePage extends StatelessWidget {
       return Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          for (int i = index - 1; i < index; i++) wordCard(i),
+          wordCard(index),
         ],
       );
     }
   }
 
-  // 平片切換
+  // 平片切換按鈕
   Widget ChangeButton() {
+    index = 0;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
@@ -160,7 +158,7 @@ class HomePage extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          for (int i = 0; i < 10; i++) LoadWordCard(list[i]),
+          for (int i = 0; i < 11; i++) LoadWordCard(list[i]),
           ChangeButton(),
         ],
       ),

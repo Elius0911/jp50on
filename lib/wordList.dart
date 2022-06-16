@@ -53,6 +53,6 @@ class WordList {
     Word("ろ", "ロ", "ro"),
     Word("わ", "ワ", "wa"), //wa
     Word("を", "ヲ", "wo"),
-    Word("ン", "ン", "n"), //n
+    Word("ん", "ン", "n"), //n
   ];
 }
