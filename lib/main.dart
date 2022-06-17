@@ -51,8 +51,9 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        onPressed: () async{
-          
+        onPressed: () async {
+          AudioCache player = AudioCache();
+          await player.load(wordList.wordList[num].roman+'.mp3');
         },
       ),
     );
