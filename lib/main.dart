@@ -22,9 +22,14 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   int changeIndex = 0; // 平片切換用, 平 = 0 / 片 = 1
 
   //生成字卡
@@ -58,7 +63,11 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        onPressed: () async {},
+        onPressed: () async {
+          AudioCache audioCache = AudioCache();
+          String route = wordList.wordList[num].roman;
+          await audioCache.load('aa.mp3');
+        },
       ),
     );
   }
@@ -123,7 +132,9 @@ class HomePage extends StatelessWidget {
               ),
             ),
             onPressed: () async {
-              changeIndex = 0;
+              setState(() {
+                changeIndex = 0;
+              });
             },
           ),
         ),
@@ -143,7 +154,9 @@ class HomePage extends StatelessWidget {
               ),
             ),
             onPressed: () async {
-              changeIndex = 1;
+              setState(() {
+                changeIndex = 1;
+              });
             },
           ),
         ),
