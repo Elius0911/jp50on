@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:audioplayers/audioplayers.dart';
 
 import 'wordList.dart';
 
@@ -65,8 +65,7 @@ class _HomePageState extends State<HomePage> {
         ),
         onPressed: () async {
           AudioCache audioCache = AudioCache();
-          String route = wordList.wordList[num].roman;
-          await audioCache.play('aa.mp3');
+          await audioCache.play(wordList.wordList[num].roman + '.mp3');
         },
       ),
     );
