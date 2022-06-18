@@ -30,8 +30,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int changeIndex = 0; // 平片切換用, 平 = 0 / 片 = 1
-
+  int changeIndex = 0; // 平片切換用索引值, 平 = 0 / 片 = 1
   //生成字卡
   Widget wordCard(int num) {
     return SizedBox(
