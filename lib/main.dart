@@ -64,8 +64,13 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         onPressed: () async {
+<<<<<<< Updated upstream
           AudioCache audioCache = AudioCache();
           await audioCache.play(wordList.wordList[num].roman + '.mp3');
+=======
+          AudioCache player = AudioCache();
+          await player.load(wordList.wordList[num].roman + '.mp3');
+>>>>>>> Stashed changes
         },
       ),
     );
