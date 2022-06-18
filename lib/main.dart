@@ -65,8 +65,7 @@ class _HomePageState extends State<HomePage> {
         ),
         onPressed: () async {
           AudioCache audioCache = AudioCache();
-          String route = wordList.wordList[num].roman;
-          await audioCache.load('aa.mp3');
+          await audioCache.play(wordList.wordList[num].roman + '.mp3');
         },
       ),
     );
