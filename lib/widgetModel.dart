@@ -1,40 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-import 'widgetModel.dart';
 import 'wordList.dart';
 
 WordList wordList = WordList();
-WidgetModel widgetModel = WidgetModel();
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class WidgetModel extends StatefulWidget {
+  const WidgetModel({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: SafeArea(
-          child: HomePage(),
-        ));
-  }
+  State<WidgetModel> createState() => _WidgetModelState();
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-<<<<<<< Updated upstream
-  int changeIndex = 0; // 平片切換用, 平 = 0 / 片 = 1
-
+class _WidgetModelState extends State<WidgetModel> {
+  int changeIndex = 0; // 平片切換用索引值, 平 = 0 / 片 = 1
   //生成字卡
   Widget wordCard(int num) {
     return SizedBox(
@@ -68,8 +47,7 @@ class _HomePageState extends State<HomePage> {
         ),
         onPressed: () async {
           AudioCache audioCache = AudioCache();
-          String route = wordList.wordList[num].roman;
-          await audioCache.load('aa.mp3');
+          await audioCache.play(wordList.wordList[num].roman + '.mp3');
         },
       ),
     );
@@ -167,19 +145,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-=======
->>>>>>> Stashed changes
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.grey,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          for (int i = 0; i < 11; i++) widgetModel.LoadWordCard(list[i]),
-          widgetModel.ChangeButton(),
-        ],
-      ),
-    );
+    return Container();
   }
 }
