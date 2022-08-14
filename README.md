@@ -1,3 +1,2 @@
 # jp50on
-
-Flutter 五十音 小project :)
+高中某門課的Flutter小專題
