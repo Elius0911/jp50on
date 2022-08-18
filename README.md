@@ -3,6 +3,6 @@
 
 僅做成果展示 未開放使用
 
-### 執行畫面
+### 成果畫面
 <img src="assets/execution_screen.png" width="30%"/>
 <img src="assets/execution_screen_2.png" width="30%"/>
