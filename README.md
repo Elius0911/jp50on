@@ -3,4 +3,6 @@
 
 僅做成果展示 未開放使用
 
-![image](https://github.com/Elius0911/jp50on/blob/main/assets/execution_screen.png = 250x)
+### 執行畫面
+<img src="assets/execution_screen.png" width="30%"/>
+<img src="assets/execution_screen_2.png" width="30%"/>
